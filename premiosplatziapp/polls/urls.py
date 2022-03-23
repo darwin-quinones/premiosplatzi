@@ -3,6 +3,7 @@ from django.urls import path
 # el punto indica la importacion de 
 # un archivo en la mis carpeta
 from . import views
+app_name = 'polls' # nombre de la aplicacion para referenciarla
 
 urlpatterns = [
     # se importa la funcion index

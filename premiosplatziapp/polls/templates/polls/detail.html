@@ -1,0 +1,39 @@
+<form action="{% url 'polls:vote' question.id %}" method="POST">
+    {% csrf_token %}
+    <fieldset>
+        <legend><h1>{{question.question_text}}</h1></legend>
+        {% if error_message %}
+            <p><strong>{{error_message}}}</strong></p>
+        {% endif %}
+        {% for choice in question.question_choices.all %}
+            <input 
+            type="radio"
+            name =choice
+            id="choice{{ forloop.counter }}"
+            value="{{choice.id}}"
+            >
+            <label for="choice{{ forloop.counter }}">
+                {{choice.choice_text}}
+            </label>
+            <br>
+        {% endfor %}
+    </fieldset>
+    <input type="submit" value="Enviar">
+</form>
+
+
+
+
+
+
+<!-- <h1>{{question.question_text}}</h1>
+<ul>
+    {% if question.question_choices.all %}
+        {% for choice in question.question_choices.all %}
+            <li>{{choice.choice_text}}</li>
+        {% endfor %}
+    {% else %}
+        <p>No choices for this question</p>
+    {% endif %}
+    
+</ul> -->
